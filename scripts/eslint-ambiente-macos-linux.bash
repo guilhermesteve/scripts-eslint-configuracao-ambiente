@@ -1,5 +1,5 @@
 # Instala a extensão ESLint no VS Code
-code --install-extension dbaeumer.vscode-eslint
+code --force --install-extension dbaeumer.vscode-eslint
 
 # Define o caminho e o nome do arquivo de configuração
 settingsPath=".vscode/settings.json"
