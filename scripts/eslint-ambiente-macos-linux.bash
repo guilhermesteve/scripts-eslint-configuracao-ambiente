@@ -9,7 +9,8 @@ settings=$(cat <<EOF
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "files.eol": "\n"
 }
 EOF
 )
@@ -18,6 +19,16 @@ EOF
 mkdir -p .vscode
 
 # Cria ou sobrescreve o arquivo settings.json com as configurações desejadas
-echo "$settings" > "$settingsPath"
+#echo "$settings" >> "$settingsPath"
+
+
+
+find . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" \) -not -path "./node_modules/*" -exec dos2unix {} \;
+
+git config --global core.autocrlf input
+
+git rm --cached -r .
+git reset --hard
+
 
 echo "Extensão ESLint instalada e configuração adicionada com sucesso!"
